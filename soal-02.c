@@ -1,49 +1,69 @@
-/*  EL2208 Praktikum Pemecahan Masalah dengan C 2020/2021
-*   Modul            : 5
-*   Percobaan        : -
-*   Hari dan Tanggal : -
-*   Nama (NIM)       : -
-*   Asisten (NIM)    : -
-*   Nama File        : -
-*   Deskripsi        :
-*/
-
-//template ini hanya saran, boleh dibuat sesuai yang kalian inginkan.
-//namun yang paling penting, harus menggunakan rekursi pada fungsi yang dibuat.
-
-
 #include <stdio.h>
 #include <math.h>
 
-double itungPass(int x, int i,int n) {
-    /*
-    fungsi untuk menghitung password dari rumus
-    input :
-    x = x pada rumus
-    i = n dari rumus
-    n = n awal mulainya
-    output :
-    nilai j dalam double
-    */
-    j = ((double)... )/ ((double)... );
+double itungPass (int x, int i,int n){
+    double j;
+    j = ((double) 1503*pow(x+n-1,3)) / ((double) x+n);
+
+//klo mo cek :
+//printf("nilai j : %lf untuk n : %d\n",j,n);
+//printf("atas %lf\n", (double) 1503*pow(x+n-1,3));
+//printf("bawah %lf\n",(double) x+n );
+    n++;
+  if (n<=i){
+    return j += itungPass(x,i,n);
+  } else {
+      return j;
+  }
 }
 
-void geserPass(int ..., int ...) {
-    /*
-    prosedur untuk menggeser password dan menampilkannya
-    (input bebas)
-    */
+void geserPass (int *passRekursif, int shift){
+int tempP[5];
+int shiftmod;
+int h,i;
+
+    shiftmod = (shift)%6;
+    printf("\nPassword akhirnya \t: ");
+    for (h=0; h<=5;h++){
+        if(((h+shiftmod)<=5)||(((h+shiftmod)%5)-1<0)){
+        tempP[h] = passRekursif[h+shiftmod];
+        } else {
+        tempP[h] = passRekursif[((h+shiftmod)%5)-1];
+        //printf("\n%d \n", tempP[h]);
+        }
+        printf("%d ", tempP[h]);
+    }
 }
 
+float nilai;
+int x,i,nilaiInt,tempNilai,change,shf;
+int passRekursif[5];
 
 int main() {
-    
-    // Template printf untuk autograder
-    // printf("Password dari fungsi \t: "); //harap perhatikan terdapat tab sebelum : untuk print ini dan print "password akhirnya"
-    // printf("Password akhirnya \t: ");
-    // printf("%d ", digit);
-    // printf("Nilai n harus lebih besar sama dengan 1 !");
-    // printf("Nilai x harus lebih besar sama dengan 10 !");
-    
-    return 0;
+    printf("Silahkan masukkan nilai x : ");
+    scanf(" %d",&x);
+    if (x >= 10){
+        printf("Silahkan masukkan nilai n : ");
+        scanf(" %d",&i);
+        if (i >= 1){
+            printf ("Password akan digeser sebanyak : ");
+            scanf(" %d", &shf);
+            nilai = itungPass(x,i,0);
+            printf("nilai dalam desimal : %lf\n", nilai);
+            nilaiInt = (int)nilai;
+            printf("nilai dalam integer : %d\n", nilaiInt);
+            printf("Password dari fungsi \t: ");
+            for (int k=0;k<=5;k++){
+                tempNilai = nilaiInt%10;
+                nilaiInt /= 10;
+                passRekursif[k]=tempNilai;
+                printf("%d ", tempNilai);
+            }
+            geserPass(passRekursif,shf);
+        }else {
+            printf("Nilai n harus lebih besar sama dengan 1 !");
+        }
+    }else{
+        printf("Nilai x harus lebih besar sama dengan 10 !");
+    }
 }
