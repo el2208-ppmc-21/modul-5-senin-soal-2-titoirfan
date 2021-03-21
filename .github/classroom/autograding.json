@@ -24,8 +24,8 @@
       "name": "03",
       "setup": "",
       "run": "./soal-02",
-      "input": "10\r\n1",
-      "output": "Nilai n harus lebih besar sama dengan 1 !",
+      "input": "10\r\n1\r\n6",
+      "output": "5 0 2 6 4 2",
       "comparison": "included",
       "timeout": 1,
       "points": 10
