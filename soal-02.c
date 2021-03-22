@@ -25,17 +25,16 @@ int h,i;
     shiftmod = (shift)%6;
     printf("\nPassword akhirnya \t: ");
     for (h=0; h<=5;h++){
-        if(((h+shiftmod)<=5)||(((h+shiftmod)%5)-1<0)){
+        if(((h+shiftmod)<=5)){
         tempP[h] = passRekursif[h+shiftmod];
-        } else {
-        tempP[h] = passRekursif[((h+shiftmod)%5)-1];
-        //printf("\n%d \n", tempP[h]);
+        } else{
+        tempP[h] = passRekursif[((h+shiftmod)%6)];
         }
         printf("%d ", tempP[h]);
     }
 }
 
-float nilai;
+float nilai; //harusnya double.. hampura >.<
 int x,i,nilaiInt,tempNilai,change,shf;
 int passRekursif[5];
 
