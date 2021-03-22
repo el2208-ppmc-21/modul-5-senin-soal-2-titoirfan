@@ -5,7 +5,7 @@
       "setup": "make soal-02",
       "run": "./soal-02",
       "input": "25\r\n3\r\n5",
-      "output": "7 6 9 2 9 0",
+      "output": "7 6 9 2 9 6",
       "comparison": "included",
       "timeout": 1,
       "points": 10
